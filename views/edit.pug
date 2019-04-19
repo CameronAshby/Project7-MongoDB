@@ -1,0 +1,14 @@
+html
+    head
+        title BackEndProject
+    body
+        h1 Edit User
+        div
+            a(href='/userList') View User List
+        div
+            form(action='/edit/' + userId, method='post')
+                input(type='text', name='id', placeholder='User Id' value=user.userId)
+                input(type='text', name='name', placeholder='Name' value=user.name)
+                input(type='email', name='email', placeholder='Email' value=user.email)
+                input(type='number', name='age', placeholder='Age' value=user.age)
+                input(type='submit')

@@ -1,0 +1,15 @@
+html
+    head
+        title BackEndProject
+    body
+        h1 Add User
+        div
+            a(href='/users') View User List
+        div
+            form(action='/newUser', method='post')
+                input(type='text', name='username', placeholder='Username')
+                input(type='text', name='firstName', placeholder='First Name')
+                input(type='text', name='lastName', placeholder='Last Name')
+                input(type='email', name='email', placeholder='Email')
+                input(type='number', name='age', placeholder='Age')
+                input(type='submit')
