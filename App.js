@@ -5,8 +5,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const path = require('path');
 
-let usersArray = [];
-
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/userManagement',
@@ -59,48 +57,46 @@ app.post('/newUser', (req, res) => {
 app.get('/users', (req, res) => {
     console.log(`GET /user/:name: ${JSON.stringify(req.params)}`);
     user.find({}, (err, data) => {
-        res.send(data);
-        res.render('users', {userArray: usersArray});
+        res.render('users', {userArray: data});
     });
 });
 
 app.get('/user/:name', (req, res) => {
-    let userName = req.params.name;
     console.log(`GET /user/:name: ${JSON.stringify(req.params)}`);
-    user.findOne({ name: userName }, (err, data) => {
+    user.find({ userId: req.params.name }, (err, data) => {
         if (err) return console.log(`Oops! ${err}`);
-        console.log(`data -- ${JSON.stringify(data)}`);
-        let returnMsg = `user name : ${userName} role : ${data.role}`;
-        console.log(returnMsg);
-        res.send(returnMsg);
+        console.log(data[0]);
+        res.render('edit', {user: data[0]});
     });
 });
 
-app.post('/updateUserRole', (req, res) => {
+app.post('/updateUser', (req, res) => {
     console.log(`POST /updateUserRole: ${JSON.stringify(req.body)}`);
+    console.log(req.body);
+    let newFirstName = req.body.firstName;
+    let newLastName = req.body.lastName;
+    let newEmail = req.body.email;
+    let newAge = req.body.age;
     let matchedName = req.body.name;
     let newrole = req.body.role;
     user.findOneAndUpdate( {name: matchedName}, {role: newrole},
         { new: true },
         (err, data) => {
             if (err) return console.log(`Oops! ${err}`);
-            console.log(`data -- ${data.role}`);
+            console.log(`data -- ${data}`);
             let returnMsg = `user name : ${matchedName} New role : ${data.role}`;
             console.log(returnMsg);
             res.send(returnMsg);
         });
 });
 
-app.post('/removeUser', (req, res) => {
+app.get('/removeUser/:userId', (req, res) => {
     console.log(`POST /removeUser: ${JSON.stringify(req.body)}`);
-    let matchedName = req.body.name;
-    user.findOneAndDelete({ name: matchedName },
+    user.findOneAndDelete({ userId: req.params.userId },
         (err, data) => {
             if (err) return console.log(`Oops! ${err}`);
             console.log(`data -- ${JSON.stringify(data)}`);
-            let returnMsg = `user name : ${matchedName}, removed data : ${data}`;
-            console.log(returnMsg);
-            res.send(returnMsg);
+            res.redirect('/users');
         });
 });
 

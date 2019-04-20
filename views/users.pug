@@ -15,12 +15,12 @@ table
     tr
     for user in userArray
         tr
-            td= user.username
+            td= user.userId
             td= user.firstName
             td= user.lastName
             td= user.email
             td= user.age
             td
-                a(href='/edit/' + user.userId) Edit
+                a(href='/user/' + user.userId) Edit
             td
-                a(href='./delete/' + user.userId) Delete
+                a(href='/removeUser/' + user.userId) Delete
