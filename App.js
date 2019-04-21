@@ -73,20 +73,19 @@ app.get('/user/:name', (req, res) => {
 app.post('/updateUser', (req, res) => {
     console.log(`POST /updateUserRole: ${JSON.stringify(req.body)}`);
     console.log(req.body);
+
+    let matchName = req.body.username;
     let newFirstName = req.body.firstName;
     let newLastName = req.body.lastName;
     let newEmail = req.body.email;
     let newAge = req.body.age;
-    let matchedName = req.body.name;
-    let newrole = req.body.role;
-    user.findOneAndUpdate( {name: matchedName}, {role: newrole},
-        { new: true },
+
+    user.findOneAndUpdate( {userId: matchName}, {firstName: newFirstName, lastName: newLastName, email: newEmail, age: newAge},
+        {new: true},
         (err, data) => {
             if (err) return console.log(`Oops! ${err}`);
             console.log(`data -- ${data}`);
-            let returnMsg = `user name : ${matchedName} New role : ${data.role}`;
-            console.log(returnMsg);
-            res.send(returnMsg);
+            res.redirect('/users');
         });
 });
 

@@ -7,7 +7,7 @@ html
             a(href='/users') View User List
         div
             form(action='/updateUser', method='post')
-                div= 'Editing: ' + user.userId
+                input(type='text', name='username', placeholder='Username' value=user.userId)
                 input(type='text', name='firstName', placeholder='First Name' value=user.firstName)
                 input(type='text', name='lastName', placeholder='Last Name' value=user.lastName)
                 input(type='email', name='email', placeholder='Email' value=user.email)
