@@ -4,6 +4,7 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const path = require('path');
+app.use(express.static(path.join(__dirname, '/public')));
 
 const mongoose = require('mongoose');
 
@@ -28,6 +29,16 @@ const user = mongoose.model('userCollection', userSchema);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set ('view engine', 'pug');
+
+app.get('/sortUser/:filter', (req, res) => {
+    user.find({}).sort({[req.params.filter]: 1}).exec((err,data) => {
+        if(err) {
+            return console.log(err);
+        }
+        console.log(data);
+        res.render('users', {userArray: data});
+    });
+});
 
 app.get('/', (req,res) => {
     res.redirect('/users');
