@@ -1,0 +1,78 @@
+* {
+    text-align: left;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tableContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    border: 1px solid #dadfea;
+    border-radius: 20px;
+}
+
+.headerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.usersContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.userInfo, .userInfoHeader {
+    width: 15%;
+}
+
+.userEmail, .userInfoHeaderEmail {
+    width: 25%;
+}
+
+.edit, .delete {
+    width: 5%;
+}
+
+.addUser {
+    text-align: center;
+}
+
+a {
+    color: #413599;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.sort {
+    text-align: center;
+}
+
+.divider {
+    margin: 10px 0;
+    height: 3px;
+    width: 100%;
+    background: #dadfea;
+}

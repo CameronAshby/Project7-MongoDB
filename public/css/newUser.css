@@ -1,0 +1,40 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.formContainer {
+    margin: 20px 0;
+    width: 50%;
+}
+
+a {
+    color: #413599;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input {
+    margin-top: 10px;
+}
+
+.submitButton {
+    width: 20%;
+}
+
+.submitButtonContainer {
+    display: flex;
+    justify-content: center;
+}

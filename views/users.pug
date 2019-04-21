@@ -1,36 +1,45 @@
 html
     head
-        link(rel='stylesheet', href='/css/style.css')
+        title DatabaseProject
+        link(rel='stylesheet', href='/css/users.css')
     body
-        div
-            p
-                a(href='/newUser') Add User
-            h1 User List
+        div(class='mainContainer')
+            div
+                h1 User List
 
-        table
-            tr
-                th Username
-                    a(href='/sortUser' + '/userId') Sort
-                th FirstName
-                    a(href='/sortUser' + '/firstName') Sort
-                th LastName
-                    a(href='/sortUser' + '/lastName') Sort
-                th Email
-                    a(href='/sortUser' + '/email') Sort
-                th Age
-                    a(href='/sortUser' + '/age') Sort
-                th
-                th
-            tr
-            for user in userArray
-                tr
-                    td= user.userId
-                    td= user.firstName
-                    td= user.lastName
-                    td= user.email
-                    td= user.age
-                    td
-                        a(href='/user/' + user.userId) Edit
-                    td
-                        a(href='/removeUser/' + user.userId) Delete
+                div(class='addUser')
+                    a(href='/newUser') Add User
+
+            div(class='tableContainer')
+                div(class='headerContainer')
+                    div(class='userInfoHeader')
+                        div() User Id
+                        a(href='/sortUser' + '/userId' class='sort') Sort
+                    div(class='userInfoHeader')
+                        div First Name
+                        a(href='/sortUser' + '/firstName' class='sort') Sort
+                    div(class='userInfoHeader')
+                        div Last Name
+                        a(href='/sortUser' + '/lastName' class='sort') Sort
+                    div(class='userInfoHeaderEmail')
+                        div Email
+                        a(href='/sortUser' + '/email' class='sort') Sort
+                    div(class='userInfoHeader')
+                        div Age
+                        a(href='/sortUser' + '/age' class='sort') Sort
+                    div(class='edit')
+                    div(class='delete')
+                div(class='divider')
+                div(class='usersContainer')
+                    for user in userArray
+                        div(class='user')
+                            div(class='userInfo')= user.userId
+                            div(class='userInfo')= user.firstName
+                            div(class='userInfo')= user.lastName
+                            div(class='userEmail')= user.email
+                            div(class='userInfo')= user.age
+                            div(class='edit')
+                                a(href='/user/' + user.userId) Edit
+                            div(class='delete')
+                                a(href='/removeUser/' + user.userId) Delete
 

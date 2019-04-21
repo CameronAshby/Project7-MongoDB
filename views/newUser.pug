@@ -1,15 +1,18 @@
 html
     head
-        title BackEndProject
+        title DatabaseProject
+        link(rel='stylesheet', href='/css/newUser.css')
     body
-        h1 Add User
-        div
-            a(href='/users') View User List
-        div
-            form(action='/newUser', method='post')
-                input(type='text', name='username', placeholder='Username')
-                input(type='text', name='firstName', placeholder='First Name')
-                input(type='text', name='lastName', placeholder='Last Name')
-                input(type='email', name='email', placeholder='Email')
-                input(type='number', name='age', placeholder='Age')
-                input(type='submit')
+        div(class='mainContainer')
+            h1 Add User
+            div
+                a(href='/users') View User List
+            div(class='formContainer')
+                form(action='/newUser', method='post' class='form')
+                    input(type='text', name='username', placeholder='User Id')
+                    input(type='text', name='firstName', placeholder='First Name')
+                    input(type='text', name='lastName', placeholder='Last Name')
+                    input(type='email', name='email', placeholder='Email')
+                    input(type='number', name='age', placeholder='Age')
+                    div(class='submitButtonContainer')
+                        input(type='submit' class='submitButton')
