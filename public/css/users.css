@@ -58,7 +58,7 @@
 }
 
 a {
-    color: #413599;
+    color: #323299;
     text-decoration: none;
 }
 
@@ -83,5 +83,26 @@ a:hover {
 
 .sortContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.searchContainer {
+    margin: 20px 0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    text-align: left;
+    padding: 5px;
+}
+
+.submitButton {
+
+}
+
+form {
+    margin: 5px;
 }

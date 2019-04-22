@@ -11,41 +11,48 @@ html
                 div(class='addUser')
                     a(href='/newUser') Add User
 
+            form(action='/searchUser', method='post')
+                input(placeholder='Search User Id...' class='search' name='idSearch')
+                input(type='submit' class='submitButton')
+
+            form(action='/clearFilters', method='post')
+                input(type='submit' value='Clear Filters' class='submitButton')
+
             div(class='tableContainer')
                 div(class='headerContainer')
                     div(class='userInfoHeader')
-                        div(class='header') User Id
                         div(class='sortContainer')
                             a(href='/sortUser' + '/userId/up' class='sort')
                                 i(class="fas fa-long-arrow-alt-up")
+                            div(class='header') User Id
                             a(href='/sortUser' + '/userId/down' class='sort')
                                 i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeader')
-                        div(class='header') First Name
                         div(class='sortContainer')
                             a(href='/sortUser' + '/firstName/up' class='sort')
                                 i(class="fas fa-long-arrow-alt-up")
+                            div(class='header') First Name
                             a(href='/sortUser' + '/firstName/down' class='sort')
                                 i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeader')
-                        div(class='header') Last Name
                         div(class='sortContainer')
                             a(href='/sortUser' + '/lastName/up' class='sort')
                                 i(class="fas fa-long-arrow-alt-up")
+                            div(class='header') Last Name
                             a(href='/sortUser' + '/lastName/down' class='sort')
                                 i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeaderEmail')
-                        div(class='header') Email
                         div(class='sortContainer')
                             a(href='/sortUser' + '/email/up' class='sort')
                                 i(class="fas fa-long-arrow-alt-up")
+                            div(class='header') Email
                             a(href='/sortUser' + '/email/down' class='sort')
                                 i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeader')
-                        div(class='header') Age
                         div(class='sortContainer')
                             a(href='/sortUser' + '/age/up' class='sort')
                                 i(class="fas fa-long-arrow-alt-up")
+                            div(class='header') Age
                             a(href='/sortUser' + '/age/down' class='sort')
                                 i(class="fas fa-long-arrow-alt-down")
                     div(class='edit')

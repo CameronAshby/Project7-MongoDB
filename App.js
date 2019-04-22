@@ -35,9 +35,21 @@ app.get('/sortUser/:filter/:direction', (req, res) => {
         if(err) {
             return console.log(err);
         }
-        console.log(data);
         res.render('users', {userArray: data});
     });
+});
+
+app.post('/searchUser', (req, res) => {
+    user.findOne({userId: req.body.idSearch.toString()}, (err, data) => {
+        if(err) return console.log(err);
+        let displayArray = [];
+        displayArray.push(data);
+        res.render('users', {userArray: displayArray});
+    })
+});
+
+app.post('/clearFilters', (req, res) => {
+    res.redirect('/users');
 });
 
 app.get('/', (req,res) => {
@@ -49,7 +61,6 @@ app.get('/newUser', (req,res) => {
 });
 
 app.post('/newUser', (req, res) => {
-    console.log(`POST /newUser: ${JSON.stringify(req.body)}`);
     const newUser = new user();
     newUser.userId = req.body.username;
     newUser.firstName = req.body.firstName;
@@ -60,20 +71,17 @@ app.post('/newUser', (req, res) => {
         if (err) {
             return console.error(err);
         }
-        console.log(`new user save: ${data}`);
         res.redirect('/users');
     });
 });
 
 app.get('/users', (req, res) => {
-    console.log(`GET /user/:name: ${JSON.stringify(req.params)}`);
     user.find({}, (err, data) => {
         res.render('users', {userArray: data});
     });
 });
 
 app.get('/user/:name', (req, res) => {
-    console.log(`GET /user/:name: ${JSON.stringify(req.params)}`);
     user.find({ userId: req.params.name }, (err, data) => {
         if (err) return console.log(`Oops! ${err}`);
         console.log(data[0]);
@@ -82,8 +90,6 @@ app.get('/user/:name', (req, res) => {
 });
 
 app.post('/updateUser', (req, res) => {
-    console.log(`POST /updateUserRole: ${JSON.stringify(req.body)}`);
-    console.log(req.body);
 
     let matchName = req.body.username;
     let newFirstName = req.body.firstName;
@@ -95,17 +101,14 @@ app.post('/updateUser', (req, res) => {
         {new: true},
         (err, data) => {
             if (err) return console.log(`Oops! ${err}`);
-            console.log(`data -- ${data}`);
             res.redirect('/users');
         });
 });
 
 app.get('/removeUser/:userId', (req, res) => {
-    console.log(`POST /removeUser: ${JSON.stringify(req.body)}`);
     user.findOneAndDelete({ userId: req.params.userId },
         (err, data) => {
             if (err) return console.log(`Oops! ${err}`);
-            console.log(`data -- ${JSON.stringify(data)}`);
             res.redirect('/users');
         });
 });
