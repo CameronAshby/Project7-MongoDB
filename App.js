@@ -30,8 +30,8 @@ const user = mongoose.model('userCollection', userSchema);
 app.set('views', path.join(__dirname, 'views'));
 app.set ('view engine', 'pug');
 
-app.get('/sortUser/:filter', (req, res) => {
-    user.find({}).sort({[req.params.filter]: 1}).exec((err,data) => {
+app.get('/sortUser/:filter/:direction', (req, res) => {
+    user.find({}).sort({[req.params.filter]: req.params.direction === 'up' ? 1 : -1}).exec((err,data) => {
         if(err) {
             return console.log(err);
         }

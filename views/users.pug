@@ -2,6 +2,7 @@ html
     head
         title DatabaseProject
         link(rel='stylesheet', href='/css/users.css')
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous")
     body
         div(class='mainContainer')
             div
@@ -13,20 +14,40 @@ html
             div(class='tableContainer')
                 div(class='headerContainer')
                     div(class='userInfoHeader')
-                        div() User Id
-                        a(href='/sortUser' + '/userId' class='sort') Sort
+                        div(class='header') User Id
+                        div(class='sortContainer')
+                            a(href='/sortUser' + '/userId/up' class='sort')
+                                i(class="fas fa-long-arrow-alt-up")
+                            a(href='/sortUser' + '/userId/down' class='sort')
+                                i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeader')
-                        div First Name
-                        a(href='/sortUser' + '/firstName' class='sort') Sort
+                        div(class='header') First Name
+                        div(class='sortContainer')
+                            a(href='/sortUser' + '/firstName/up' class='sort')
+                                i(class="fas fa-long-arrow-alt-up")
+                            a(href='/sortUser' + '/firstName/down' class='sort')
+                                i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeader')
-                        div Last Name
-                        a(href='/sortUser' + '/lastName' class='sort') Sort
+                        div(class='header') Last Name
+                        div(class='sortContainer')
+                            a(href='/sortUser' + '/lastName/up' class='sort')
+                                i(class="fas fa-long-arrow-alt-up")
+                            a(href='/sortUser' + '/lastName/down' class='sort')
+                                i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeaderEmail')
-                        div Email
-                        a(href='/sortUser' + '/email' class='sort') Sort
+                        div(class='header') Email
+                        div(class='sortContainer')
+                            a(href='/sortUser' + '/email/up' class='sort')
+                                i(class="fas fa-long-arrow-alt-up")
+                            a(href='/sortUser' + '/email/down' class='sort')
+                                i(class="fas fa-long-arrow-alt-down")
                     div(class='userInfoHeader')
-                        div Age
-                        a(href='/sortUser' + '/age' class='sort') Sort
+                        div(class='header') Age
+                        div(class='sortContainer')
+                            a(href='/sortUser' + '/age/up' class='sort')
+                                i(class="fas fa-long-arrow-alt-up")
+                            a(href='/sortUser' + '/age/down' class='sort')
+                                i(class="fas fa-long-arrow-alt-down")
                     div(class='edit')
                     div(class='delete')
                 div(class='divider')

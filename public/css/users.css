@@ -1,5 +1,5 @@
 * {
-    text-align: left;
+    text-align: center;
 }
 
 .mainContainer {
@@ -75,4 +75,13 @@ a:hover {
     height: 3px;
     width: 100%;
     background: #dadfea;
+}
+
+.header {
+    text-align: center;
+}
+
+.sortContainer {
+    display: flex;
+    justify-content: space-evenly;
 }
