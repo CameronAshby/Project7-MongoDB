@@ -62,17 +62,24 @@ app.get('/newUser', (req,res) => {
 
 app.post('/newUser', (req, res) => {
     const newUser = new user();
+
     newUser.userId = req.body.username;
     newUser.firstName = req.body.firstName;
     newUser.lastName = req.body.lastName;
     newUser.email = req.body.email;
     newUser.age = req.body.age;
-    newUser.save((err, data) => {
-        if (err) {
-            return console.error(err);
-        }
-        res.redirect('/users');
-    });
+
+    if(newUser.userId === '') {
+        res.send('User must have an id');
+    }
+    else {
+        newUser.save((err, data) => {
+            if (err) {
+                return console.error(err);
+            }
+            res.redirect('/users');
+        });
+    }
 });
 
 app.get('/users', (req, res) => {
