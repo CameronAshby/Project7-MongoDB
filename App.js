@@ -18,7 +18,10 @@ db.once('open', function () {
 });
 
 const userSchema = new mongoose.Schema({
-    userId: String,
+    userId: {
+        type: String,
+        unique: true
+    },
     firstName: String,
     lastName: String,
     email: String,
@@ -75,6 +78,7 @@ app.post('/newUser', (req, res) => {
     else {
         newUser.save((err, data) => {
             if (err) {
+                res.send('That userId is already taken');
                 return console.error(err);
             }
             res.redirect('/users');
